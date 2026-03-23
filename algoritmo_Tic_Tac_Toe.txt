@@ -1,0 +1,61 @@
+ALGORITMO: Tic Tac Toe
+------------------------------
+
+VARIABILI E TIPI:
+  - keep_going: bool
+  - empty_square: array
+  - placeholder: array
+  - squares_to_pop: array
+  - player_1_name: str
+  - player_2_name: str
+  - player: str
+  - turn: int
+
+COSTANTI:
+  - funzione display_board: prende un parametro, placeholder che contiene la lista di cose da mettere all'interno delle caselle. Crea una matrice 3x3 separata da linee verticali
+  - funzione get_valid_bord_move: prende due parametri, prompt(messaggio da mostrare) e valid_options(le risposte attese).Si assicura di controllare che l'utente abbia scelto la casella giusta cioè una casella libera, se si, ritorna la scelta dell'utente altrimenti avvisa della non disponibilita della casella e successivamente rilancia la funzione
+  - funzione get_valid_bord_move_computer: prende un parametro, valid_options(le risposte attese). il computer deve scegliere un valore tra quelli presenti nel valid_options e ritornare in int la risposta del computer. nel caso 5 fa parte di valid options ritornare direttamente in int 5
+  - funzione get_valid_input: prende due parametri, prompt(messaggio da mostrare) e valid_options(le risposte attese). Si assicura che l'utente abbia scelto le opzioni incluse in valid_options, se si ritorna la scelta dell'utente altrimenti stampa un messaggio di errore e rilancia la funzione
+  - funzione get_player_names: non prende parametri, chiede il nome del giocatore 1 e nel caso ce ne sia un secondo, chiede anche il suo nome e ritorna il nome del giocatore 1 e del giocatore 2 altrienti ritorna solo il nome del giocatore 1 e per il giocatore 2 assegna il nome "computer"
+  - funzione game_logic: prende due parametri, placeholder e empty_square. controlla tutti i casi di vincita possibile e ritorna 1 se un caso è stato chiamato altrimenti 0
+
+INIZIO:
+  keep_going <--- True
+  finche keep_going:
+  	player_1_name <--- usiamo get_player_names()
+  	player_2_name <--- usiamo get_player-names()
+  	stampiamo la griglia 3x3 con la funzione display_board
+  	player <--- "0"
+  	turn <--- 0
+
+  	ciclo
+  		Se turn è superiore o uguale a 5
+  			winner <--- controlla se qualcuno a vinto con game_logic
+			Se winner è diverso da 0 cioè c'è un vincitore
+				name <--- del vincitore sara uguale a  player_1_name se player uguale a "0" altrimenti player_2_name
+				scrivi(name,"Won!!!")
+				esci dal ciclo
+			fine Se
+			
+			Se finiscono gli elementi all'interno di squares_to_top
+				scrivi("Draw!, No one Winss!!")
+				esci dal ciclo
+			fine Se
+		fine Se
+
+		a turn aggiungi 1
+		se il player è uguale a "0" cambialo in "X" vice versa fine se
+		current_player_name <--- se player uguale "X" allora scivi player_2_name altrimenti player_1_name fine se
+		Se player_2_name è uguale "computer" e player uguale "X"
+			alla posizione scelta dall'computer nella matrice grazie alla funzione get_valid_bord_move_computer metti il simbolo di player
+			stampa la griglia 3x3
+		fine Se
+
+		alla posizione scelta dall'utente nella matrice grazie alla funzione get_valid_bord_move metti il simbolo di player
+		stampa la griglia 3x3
+
+	Se la risposta della funzione get_valid_input comincia con 'n'
+		keep_going uguale False
+		scrivi("Thanks for playing!")
+	fine Se
+FINE

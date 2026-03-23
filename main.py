@@ -1,12 +1,21 @@
+from Tic_Tac_Toe_art import logo
 import random
 import time
 import os
 
 def clear_screen():        
     """
-    Clears the terminal screen. If the operating system is Windows, it uses the 'cls' command, otherwise it uses the 'clear' command.
+    Clears the screen and prints the Tic Tac Toe logo.
+
+    This function clears the screen and prints the Tic Tac Toe logo. It uses
+    the os module to determine the operating system and call either the
+    'cls' or 'clear' command to clear the screen. It then prints the logo
+    using the print function.
+
+    :return: None
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+    print(logo)
 
 def display_board(squares):
     """
@@ -163,12 +172,12 @@ def main():
     :return: None
     """
     keep_going = True
+    clear_screen()
+    player_1_name, player_2_name = get_player_names()
     while keep_going:
         empty_square = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
         placeholder = [empty_square[i] for i in range(9)]
         SQUARES_TO_POP = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        clear_screen()
-        player_1_name, player_2_name = get_player_names()
         clear_screen()
         display_board(placeholder)
         player = "🅾️" 
@@ -201,6 +210,7 @@ def main():
 
         if get_valid_input("Play again?(y/n)\n", ['y', 'yes', 'n', 'no']).startswith('n'):
             keep_going = False
+            clear_screen()
             print("Thanks for playing!")
 
 if __name__ == "__main__":
